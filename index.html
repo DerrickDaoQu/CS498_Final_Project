@@ -15,57 +15,62 @@
             height: 100%;
             display: flex;
             align-items: center;
+            min-width: 70px;
         }
 
         .navigator:hover {
             color: skyblue;
-            text-decoration: underline
+            text-decoration: underline;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
         }
 
-        p.title{
+        p.title {
             font-size: 18px;
             text-align: left;
             font-weight: bold;
-            color: rgba(0,0,0,0.7);
+            color: rgba(0, 0, 0, 0.7);
             margin: 0;
         }
 
-        p.subtitle{
+        p.subtitle {
             font-size: 14px;
             font-weight: normal;
             padding: 0 30px 0 30px;
             margin-bottom: 0;
-            color: rgba(0,0,0,0.7);
+            color: rgba(0, 0, 0, 0.7);
         }
 
-        .page-title{
+        .page-title {
             font-weight: bold;
-            align-self: center;flex: 1 1 auto;text-align: center;font-size: xx-large;color: rgba(0,0,0,0.7);
+            align-self: center;
+            flex: 1 1 auto;
+            text-align: center;
+            font-size: xx-large;
+            color: rgba(0, 0, 0, 0.7);
         }
 
-        .pager>span{
+        .pager>span {
             width: 30px;
             height: 30px;
             border-width: 1px;
             border-radius: 2px;
             border: 1px solid #cccccc;
             text-align: center;
-            color: rgba(0,0,0,0.7);
+            color: rgba(0, 0, 0, 0.7);
             line-height: 30px;
             opacity: 0.5;
             cursor: pointer;
         }
 
-        .selected{
+        .selected {
             background-color: #eeeeee;
             opacity: 1 !important;
         }
 
-        .pager>span:hover{
+        .pager>span:hover {
             background-color: #eeeeee;
         }
 
@@ -78,29 +83,30 @@
             border: 0 none;
             border-radius: 8px 8px 8px 8px;
             box-shadow: -3px 3px 15px #888888;
-            color: rgba(0,0,0,0.7);
+            color: rgba(0, 0, 0, 0.7);
             font: 14px;
             padding: 5px;
             text-align: center;
         }
 
-        .footer{
+        .footer {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             width: 900px;
         }
-        .footer>*{
+
+        .footer>* {
             width: 100%;
             margin-bottom: 50px;
         }
     </style>
 </head>
 
-<body style="height: 100%;margin: 0;display: flex;justify-content: center;align-items: flex-start;flex-direction: row">
+<body style="height: 100%;margin: 0;display: flex;justify-content: center;align-items: flex-start;flex-direction: row;min-width: 1100px;">
     <div class="toolTip"></div>
-    <div id="navigator-left" onclick="navigatorClicked(-1)" class="navigator" style="margin-right: 100px;opacity: 0;pointer-events: none">< Prev</div>
-    <div style="display: flex;flex-direction: column;align-items: center;margin-bottom: 100px">
+    <div id="navigator-left" onclick="navigatorClicked(-1)" class="navigator" style="margin-right: 30px;opacity: 0;pointer-events: none">&lt;Prev</div>
+    <div style="display: flex;flex-direction: column;align-items: center;">
         <div style="margin: 30px 0 30px 0;">
             <div id="title" class="page-title"></div>
             <div style="display: flex;justify-content: center;margin-top: 10px">
@@ -112,59 +118,102 @@
             </div>
         </div>
         <div class="pager" style="display: flex;margin:-10px 0 0 0">
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
-            </div>
-        <div id="page1" style="width: 900px;height: 800px;display: flex;flex-direction: column;align-items: center;">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </div>
+        <div id="page1" style="width: 900px;height: 800px;display: flex;flex-direction: column;align-items: center;margin-bottom: 100px">
             <div style="width: 100%;height: 120px;display: flex;align-items: stretch;flex-direction: column">
                 <div style="height: 800px;width: 900px">
                     <p class="title">Project Objective</p>
-                    <p class="subtitle" style="margin-bottom: 25px">&bull;&nbsp;&nbsp;&nbsp;&nbsp;This project tries to study the factors that impact the bank customers' decision whether to take the term subscription or not and use such insights to maximize the return of investment, i.e, maximizing the term subscriotion offer acceptance rate for the bank.</p>
+                    <p class="subtitle" style="margin-bottom: 25px">&bull;&nbsp;&nbsp;&nbsp;&nbsp;This project tries to study the factors that impact the bank customers'
+                        decision whether to take the term subscription or not and use such insights to maximize the return
+                        of investment, i.e, maximizing the term subscriotion offer acceptance rate for the bank.</p>
                     <p class="title">Dataset Overview</p>
-                    <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;Overview - The data is named "Bank Marketing" and is related with direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be ('yes') or not ('no') subscribed. </p>
-                    <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;Data Source - The dataset was obtained from one of the most famous data repositories, UCI Machine Learning Repository. I just randomly picked this one from the list ranked by top 10 most hits since 2007.</p>
-                    <p class="subtitle" style="margin-bottom: 25px">&bull;&nbsp;&nbsp;&nbsp;&nbsp;Data Preparation - The dataset has 20 columns which is very hard to visualize as is. I imported the data into pandas data frame, ran a random forest classification using scikit learn and obtained the 2 most important features: Job category and Wheter the customer has a loan, both of which were all used in this visualization.</p>
+                    <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;Overview - The data is named "Bank Marketing" and is related with direct
+                        marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone
+                        calls. Often, more than one contact to the same client was required, in order to access if the product
+                        (bank term deposit) would be ('yes') or not ('no') subscribed. </p>
+                    <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;Data Source - The dataset was obtained from one of the most famous data
+                        repositories, UCI Machine Learning Repository. I just randomly picked this one from the list ranked
+                        by top 10 most hits since 2007.</p>
+                    <p class="subtitle" style="margin-bottom: 25px">&bull;&nbsp;&nbsp;&nbsp;&nbsp;Data Preparation - The dataset has 20 columns which is very hard to visualize
+                        as is. I imported the data into pandas data frame, ran a random forest classification using scikit
+                        learn and obtained the 2 most important features: Job category and Wheter the customer has a loan,
+                        both of which were all used in this visualization.</p>
                     <p class="title">Rubrics Compliance</p>
-                    <p class="subtitle" style="font-weight: bold">&bull;&nbsp;&nbsp;&nbsp;&nbsp;Does the narrative visualization correctly follow the hybrid structure as stated by the essay? </p>
-                    <p class="subtitle" style="padding:0 50px 0 50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yes. Overall this visualization follows a slide show design with unique interactivities on each page. Users can choose to navigate linearly by clicking the "Prev" and "Next" button located on the left and right of the screen, or jump to specific slide by clicking the pager control at the top.</p>
+                    <p class="subtitle" style="font-weight: bold">&bull;&nbsp;&nbsp;&nbsp;&nbsp;Does the narrative visualization correctly follow the hybrid structure
+                        as stated by the essay? </p>
+                    <p class="subtitle" style="padding:0 50px 0 50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yes. Overall this visualization follows a slide show
+                        design with unique interactive experiences on each page. Users can choose to navigate linearly by
+                        clicking the "Prev" and "Next" button located on the left and right of the screen, or directly jump
+                        to specific slide by selecting different page index on the pager control at the top.</p>
                     <p class="subtitle" style="font-weight: bold">&bull;&nbsp;&nbsp;&nbsp;&nbsp;Does the narrative visualization effectively utilize scenes? </p>
-                    <p class="subtitle" style="padding:0 50px 0 50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yes. There are totally 5 scenes/pages in this visualization. Each one serves unique purposes and has its own charts, text descriptions, interactive controls, etc.</p>
+                    <p class="subtitle" style="padding:0 50px 0 50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yes. There are totally 5 scenes/pages in this visualization.
+                        Each one serves unique purposes and has its own charts, text descriptions, interactive controls,
+                        etc.
+                    </p>
                     <p class="subtitle" style="font-weight: bold">&bull;&nbsp;&nbsp;&nbsp;&nbsp;Does the narrative visualization effectively utilize annotations? </p>
-                    <p class="subtitle" style="padding:0 50px 0 50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yes. Most of the charts have annotations embeded directly. All charts support tooltip that gives dynanmic and interactive annotation experiences.</p>
+                    <p class="subtitle" style="padding:0 50px 0 50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yes. Most of the charts have annotations embeded directly.
+                        In addition, all charts support tooltip that gives dynanmic and interactive annotation experiences.</p>
                     <p class="subtitle" style="font-weight: bold">&bull;&nbsp;&nbsp;&nbsp;&nbsp;Does the narrative visualization effectively utilize parameters? </p>
-                    <p class="subtitle" style="padding:0 50px 0 50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yes. There are 4 major parameters that can be controled by the users: </p>
-                    <p class="subtitle" style="padding:0 100px 0 100px">1) Whether to animate the dashboard - this parameter controls whether to enable trainsition and animation on charts and can be turned on and off by clicking the "Animate Dashboard" checkbox at the top of the screen.</p>
-                    <p class="subtitle" style="padding:0 100px 0 100px">2) Enable/disable tooltip - this parameter controls whether to display tooltips when hovering on charts and can be turned on and off by clicking the "Display Tooltip on Hover" checkbox at the top of the screen.</p>
-                    <p class="subtitle" style="padding:0 100px 0 100px">3) Pager - this parameter shows and controls the current page for display. Users can click the "Prev" and "Next" button on the left and right of the screen for linear navigation or click the page index on the pager control to immediately jump to a specific slide.</p>
-                    <p class="subtitle" style="padding:0 100px 0 100px">4) Sort by criteria on page 4 - this parameter controls the sorting behavior of the stacked bar chart located on page 4 and can be changed by the drill down control at the top of the chart.</p>
+                    <p class="subtitle" style="padding:0 50px 0 50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yes. There are 4 major parameters in this visualization
+                        that can be controled by the users: </p>
+                    <p class="subtitle" style="padding:0 100px 0 100px">1) Whether to animate the dashboard - this parameter controls whether to enable trainsition and animation
+                        on charts and can be turned on and off by clicking the "Animate Dashboard" checkbox at the top of
+                        the screen.</p>
+                    <p class="subtitle" style="padding:0 100px 0 100px">2) Enable/disable tooltip - this parameter controls whether to display tooltips when hovering on charts
+                        and can be turned on and off by clicking the "Display Tooltip on Hover" checkbox at the top of the
+                        screen.
+                    </p>
+                    <p class="subtitle" style="padding:0 100px 0 100px">3) Pager - this parameter shows and controls the current/active page to display. Users can click the
+                        "Prev" and "Next" button on the left and right of the screen for linear navigation or click the page
+                        index on the pager control to immediately jump to a specific slide.</p>
+                    <p class="subtitle" style="padding:0 100px 0 100px">4) "Sort by" criteria on page 4 - this parameter controls the sorting behavior of the stacked bar chart
+                        located on page 4 and can be changed by selecting different values from the drill down control at the top of the chart.</p>
                     <p class="subtitle" style="font-weight: bold">&bull;&nbsp;&nbsp;&nbsp;&nbsp;Does the narrative visualization effectively utilize triggers? </p>
-                    <p class="subtitle" style="padding:0 50px 0 50px;margin-bottom: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yes. When the 4 parameters (see rubrics 4) change different kinds of actions will be triggered. For example, when turning on and of the animation and tooltip the active/current page will be refreshed to immediately reflect the changes. When the index on the pager control is clicked the trigger will activate specific slide and refresh the view. When different sorting criteria is selected on page 4 the stacked bar chart will be refreshed with new sorting logic applied. So on and so forth.</p>
+                    <p class="subtitle" style="padding:0 50px 0 50px;margin-bottom: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yes. When the 4 parameters (see rubrics explanation #4) change different
+                        kinds of actions will be triggered. For example, when turning on and of the animation and tooltip
+                        the active/current page will be immediately refreshed to reflect the changes. When the index on the
+                        pager control is clicked the trigger will activate the corresponding selected slide and refresh the
+                        view. When different sorting criteria is selected on page 4 the stacked bar chart will be refreshed
+                        with new sorting logic applied. So on and so forth.</p>
                 </div>
             </div>
         </div>
-        <div id="page2" style="width: 900px;height: 800px;display: flex;flex-direction: column;align-items: center">
+        <div id="page2" style="width: 900px;height: 800px;display: flex;flex-direction: column;align-items: center;margin-bottom: 100px">
             <div id="canvas_page2" style="height: 600px;width: 600px;display: flex;justify-content: center;align-content: center;align-items: center">
             </div>
             <div class="footer">
                 <p class="title">Conclusion</p>
-                <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;This first pie chart shows a high level overview of the number of customers taking the term subscription vs otherwise. As can be clearly seen and expected, the number of acceptance is significantly outweighted. The number of offer acceptance is 514, taking up only 11.5% of the entire population.</p>
-                <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;The result does pass the common sense test as we would normally expect the success rate of phone sale to be much lower than the rejection rate.</p>
+                <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;This first pie chart shows a high level overview of the number of customers
+                    taking the term subscription vs otherwise. As can be clearly seen and expected, the number of acceptance
+                    is significantly outweighted. The number of offer acceptance is 514, taking up only 11.5% of the entire
+                    population.
+                </p>
+                <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;The result does pass the common sense test as we would normally expect the
+                    success rate of phone sale to be much lower than the rejection rate.</p>
             </div>
         </div>
-        <div id="page3" style="width: 900px;height: 800px;display: flex;flex-direction: column;align-items: center">
-                <div id="canvas_page3" style="height: 600px;width: 600px;display: flex;justify-content: center;align-content: center;align-items: center">
-                </div>
-                <div class="footer">
-                    <p class="title">Conclusion</p>
-                    <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;This bubble chart shows whether having a loan impacts the decision making with the size representing the number of customers falling into each category.</p>
-                    <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;The largest circle is for group where neither the clients have a loan or end up taking the offer. The smallest circle represents the clients who had a loan and took the offer. It can be clearly seen from the graph that this portion is much smller than other categories, indicating that having a loan does impact the final decision in a negative way.</p>
-                    <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;This result also passes the common sense test as the more money spent on the loan, the less can be spent on other products such as the term subscription and therefore the less likely the offer would be accepted.</p>
-                </div>
+        <div id="page3" style="width: 900px;height: 800px;display: flex;flex-direction: column;align-items: center;margin-bottom: 100px">
+            <div id="canvas_page3" style="height: 600px;width: 600px;display: flex;justify-content: center;align-content: center;align-items: center">
             </div>
-        <div id="page4" style="width: 900px;height: 800px;display: flex;flex-direction: column;align-items: center">
+            <div class="footer">
+                <p class="title">Conclusion</p>
+                <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;This bubble chart shows whether having a loan impacts the decision making with
+                    the size representing the number of customers falling into each category.</p>
+                <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;The largest circle is for group where neither the clients have a loan or end
+                    up taking the offer. The smallest circle represents the clients who had a loan and took the offer. It
+                    can be clearly seen from the graph that this portion is much smller than other categories, indicating
+                    that having a loan does impact the final decision in a negative way.</p>
+                <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;This result also passes the common sense test as the more money spent on the
+                    loan, the less can be spent on other products such as the term subscription and therefore the less likely
+                    the offer would be accepted.</p>
+            </div>
+        </div>
+        <div id="page4" style="width: 900px;height: 800px;display: flex;flex-direction: column;align-items: center;margin-bottom: 100px">
             <div style="margin-top: 30px;display: flex;flex-direction: row;align-items: center">
                 <span style="font-size: 14px;font-weight: bold;margin-right: 10px">Sort Chart By:</span>
                 <select id="sort-by" onchange="sortByChanged()">
@@ -177,22 +226,35 @@
             </div>
             <div class="footer">
                 <p class="title">Conclusion</p>
-                <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;The stacked bar chart studies the impacts of the job categories on the decision making. By default, the chart is sorted by the acceptance rate (i.e., liklihood of accepting the offer) of each category (not absolute occurance) but please feel free to change the sorting criteria from the top dropdown box. </p>
-                <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;It can be clearly seen that the top 5 groups with the highest chance of taking the subscription are - Retired, Student, Managment, Housemaid, and Admin, and the top 5 subscribed groups in absolute number (not the percentage as used for sorting by default) are: Management, Technician, Blue-collar, Admin. and Retired.</p>
+                <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;The stacked bar chart studies the impacts of the job categories on the decision
+                    making. By default, the chart is sorted by the acceptance rate (i.e., liklihood of accepting the offer)
+                    of each category (not absolute occurance) but please feel free to change the sorting criteria from the
+                    top dropdown box. </p>
+                <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;It can be clearly seen that the top 5 groups with the highest chance of taking
+                    the subscription are - Retired, Student, Managment, Housemaid, and Admin, and the top 5 subscribed groups
+                    in absolute number (not the percentage as used for sorting by default) are: Management, Technician, Blue-collar,
+                    Admin. and Retired.</p>
             </div>
         </div>
-        <div id="page5" style="width: 900px;height: 800px;display: flex;flex-direction: column;align-items: center;margin-top: 50px">
-                <div style="width: 100%;height: 120px;display: flex;align-items: stretch;flex-direction: column">
-                    <div style="height: 600px;width: 900px">
-                        <p class="title">Project Insights</p>
-                        <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;As stated at the beginning of the visualization, the aim of this project is to study the factors that impact the bank customers' decision whether to take the term subscription or not and use such insights to maximize the return of investment, i.e, maximizing the term subscriotion offer acceptance rate for the bank.</p>
-                        <p class="subtitle" style="margin-bottom: 25px">&bull;&nbsp;&nbsp;&nbsp;&nbsp;This visualization serves this objective by studying the effects of Loan and Job Category on the success rate, with the goal to maximize the acceptance rate. For example, given the limited time and resources, we want to reach out to the groups with the hightest posibility of sucess first as they are more likely to accept the offer. In addition, clients without loan tend to have more money at disposal and are more likely to take the offer so they should be targeted first.</p>
-                        <p class="title" style="font-size: 50px;text-align: center;margin-top: 100px">Thank You!</p>
-                        </div>
+        <div id="page5" style="width: 900px;display: flex;flex-direction: column;align-items: center;margin-top: 50px">
+            <div style="width: 100%;height: 120px;display: flex;align-items: stretch;flex-direction: column">
+                <div style="height: 600px;width: 900px">
+                    <p class="title">Project Insights</p>
+                    <p class="subtitle">&bull;&nbsp;&nbsp;&nbsp;&nbsp;As stated at the beginning of the visualization, the aim of this project
+                        is to study the factors that impact the bank customers' decision whether to take the term subscription
+                        or not and use such insights to maximize the return of investment, i.e, maximizing the term subscriotion
+                        offer acceptance rate for the bank.</p>
+                    <p class="subtitle" style="margin-bottom: 25px">&bull;&nbsp;&nbsp;&nbsp;&nbsp;This visualization serves this objective by studying the effects of Loan
+                        and Job Category on the success rate, with the goal to maximize the acceptance rate. For example,
+                        given the limited time and resources, we want to reach out to the groups with the hightest posibility
+                        of sucess first as they are more likely to accept the offer. In addition, clients without loan tend
+                        to have more money at disposal and are more likely to take the offer so they should be targeted first.</p>
+                    <p class="title" style="font-size: 50px;text-align: center;margin-top: 100px">Thank You!</p>
                 </div>
             </div>
+        </div>
     </div>
-    <div id="navigator-right" onclick="navigatorClicked(1)" class="navigator" style="margin-left: 100px">Next ></div>
+    <div id="navigator-right" onclick="navigatorClicked(1)" class="navigator" style="margin-left: 30px">Next&gt;</div>
 </body>
 
 </html>

@@ -64,7 +64,7 @@ function UpdateViz() {
             break;
         case 3:
             pageTitle.innerHTML = 'Whether Having Loan Affects the Subscription Decision';
-            UpdateBoxPlot();
+            UpdateBubbleChart();
             break;
         case 4:
             pageTitle.innerHTML = 'How Decision Making Varies among Job Categories';
@@ -78,9 +78,9 @@ function UpdateViz() {
 
 function UpdateStackedBar(sortBy) {
     d3.select('#canvas_page4').selectAll('*').remove();
-    var pieContainer = d3.select('#canvas_page4').node();
-    var width = pieContainer.getBoundingClientRect().width;
-    var height = pieContainer.getBoundingClientRect().height;
+    var canvasContainer = d3.select('#canvas_page4').node();
+    var width = canvasContainer.getBoundingClientRect().width;
+    var height = canvasContainer.getBoundingClientRect().height;
     var margin = 50;
     var transition_duration = dashboardAnimated ? 1000 : 0;
     var data = [
@@ -117,7 +117,7 @@ function UpdateStackedBar(sortBy) {
 
     var keys = ['Yes', 'No'];
 
-    g = svg.append("g").attr("transform", "translate(" + margin + "," + margin + ")");
+    g = svg.append('g').attr('transform', 'translate(' + margin + ',' + margin + ')');
 
     if (sortBy == null) {
         sortBy = 'acceptRate';
@@ -139,59 +139,59 @@ function UpdateStackedBar(sortBy) {
     y.domain([0, d3.max(data, function (d) { return d['Yes'] + d['No']; })]).nice();
     z.domain(keys);
 
-    g.append("g")
-        .selectAll("g")
+    g.append('g')
+        .selectAll('g')
         .data(d3.stack().keys(keys)(data))
-        .enter().append("g")
-        .attr("fill", function (d) { return z(d.key); })
-        .selectAll("rect")
+        .enter().append('g')
+        .attr('fill', function (d) { return z(d.key); })
+        .selectAll('rect')
         .data(function (d) { return d; })
-        .enter().append("rect")
-        .attr("width", x.bandwidth())
+        .enter().append('rect')
+        .attr('width', x.bandwidth())
         .attr('height', 0)
         .attr('value', 'bar')
-        .attr("x", function (d) { return x(d['data']['label']); })
-        .attr("y", function (d) { return y(d[1]); })
+        .attr('x', function (d) { return x(d['data']['label']); })
+        .attr('y', function (d) { return y(d[1]); })
         .transition()
         .duration(transition_duration)
-        .attr("height", function (d) { return y(d[0]) - y(d[1]); });
+        .attr('height', function (d) { return y(d[0]) - y(d[1]); });
 
 
-    g.append("g")
-        .attr("class", "axis")
-        .attr("transform", "translate(0," + height + ")")
+    g.append('g')
+        .attr('class', 'axis')
+        .attr('transform', 'translate(0,' + height + ')')
         .call(d3.axisBottom(x));
 
-    g.append("g")
-        .attr("class", "axis")
+    g.append('g')
+        .attr('class', 'axis')
         .call(d3.axisLeft(y).ticks())
-        .append("text")
-        .attr("x", 2)
-        .attr("y", y(y.ticks().pop()) + 0.5)
-        .attr("dy", "0.32em")
-        .attr("fill", "#000")
-        .attr("font-weight", "bold")
-        .attr("text-anchor", "start");
+        .append('text')
+        .attr('x', 2)
+        .attr('y', y(y.ticks().pop()) + 0.5)
+        .attr('dy', '0.32em')
+        .attr('fill', '#000')
+        .attr('font-weight', 'bold')
+        .attr('text-anchor', 'start');
 
-    var legend = g.append("g")
-        .attr("font-family", "sans-serif")
-        .attr("font-size", 10)
-        .attr("text-anchor", "end")
-        .selectAll("g")
+    var legend = g.append('g')
+        .attr('font-family', 'sans-serif')
+        .attr('font-size', 10)
+        .attr('text-anchor', 'end')
+        .selectAll('g')
         .data(keys.slice().reverse())
-        .enter().append("g")
-        .attr("transform", function (d, i) { return "translate(0," + i * 20 + ")"; });
+        .enter().append('g')
+        .attr('transform', function (d, i) { return 'translate(0,' + i * 20 + ')'; });
 
-    legend.append("rect")
-        .attr("x", width + 24)
-        .attr("width", 19)
-        .attr("height", 19)
-        .attr("fill", z);
+    legend.append('rect')
+        .attr('x', width + 24)
+        .attr('width', 19)
+        .attr('height', 19)
+        .attr('fill', z);
 
-    legend.append("text")
-        .attr("x", width + 19)
-        .attr("y", 9.5)
-        .attr("dy", "0.32em")
+    legend.append('text')
+        .attr('x', width + 19)
+        .attr('y', 9.5)
+        .attr('dy', '0.32em')
         .text(function (d) { return d; });
 
     div = d3.select('.toolTip');
@@ -204,7 +204,7 @@ function UpdateStackedBar(sortBy) {
         else {
             div.style('display', 'none');
         }
-        div.html((d[0]==0?'Offer Accepted':'Offer Rejected') + ': ' + d[1] + '<br>' + 'Group Success Rate: ' + d['data']['acceptRate'] + '%');
+        div.html((d[0] == 0 ? 'Offer Accepted' : 'Offer Rejected') + ': ' + d[1] + '<br>' + 'Group Success Rate: ' + d['data']['acceptRate'] + '%');
         svg.selectAll('.bar').attr('stroke', 'none');
         d3.select(this).attr('stroke', 'black');
     })
@@ -221,11 +221,11 @@ function sortByChanged() {
     UpdateStackedBar(sortBy);
 }
 
-function UpdateBoxPlot() {
+function UpdateBubbleChart() {
     d3.select('#canvas_page3').selectAll('*').remove();
-    var pieContainer = d3.select('#canvas_page3').node();
-    var width = pieContainer.getBoundingClientRect().width;
-    var height = pieContainer.getBoundingClientRect().height;
+    var canvasContainer = d3.select('#canvas_page3').node();
+    var width = canvasContainer.getBoundingClientRect().width;
+    var height = canvasContainer.getBoundingClientRect().height;
     var margin = 30;
     var transition_duration = dashboardAnimated ? 1000 : 0;
     var data = { 'children': [{ 'label': ['Has Loan? No', 'Term Subscribed? No'], 'value': 3321, 'fillColor': d3.schemeCategory10[0], 'factor': 1 }, { 'label': ['Has Loan? Yes', 'Term Subscribed? No'], 'value': 648, 'fillColor': d3.schemeCategory10[0], 'factor': 1 }, { 'label': ['Has Loan? No', 'Term Subscribed? Yes'], 'value': 472, 'fillColor': d3.schemeCategory10[1], 'factor': 1 }, { 'label': ['Yes', 'Yes'], 'value': 42, 'fillColor': d3.schemeCategory10[1], 'factor': 2 }] };
@@ -299,6 +299,32 @@ function UpdateBoxPlot() {
         })
         .attr('fill', 'white');
 
+    var legendData = ['Term Rejected', 'Term Subscriped'];
+    var legend = svg.append('g')
+        .attr('class', 'node')
+        .attr('transform', 'translate(' + (-width / 2) + ',' + (height - 50) + ')')
+        .selectAll('g')
+        .data(legendData)
+        .enter().append('g')
+        .attr('transform', function (d, i) { return 'translate(' + (i * 150 - 150) + ',0)'; });
+
+    legend.append('rect')
+        .attr('font-family', 'sans-serif')
+        .attr('font-size', 10)
+        .attr('text-anchor', 'end')
+        .attr('x', width + 24)
+        .attr('width', 19)
+        .attr('height', 19)
+        .attr('fill', function (d, i) {
+            return d3.schemeCategory10[i];
+        });
+
+    legend.append('text')
+        .attr('x', width + 50)
+        .attr('y', 9.5)
+        .attr('dy', '0.32em')
+        .text(function (d) { return d; });
+
     div = d3.select('.toolTip');
     d3.selectAll('circle,text').on('mousemove', function (d, i) {
         div.style('left', d3.event.pageX + 10 + 'px');
@@ -320,10 +346,10 @@ function UpdateBoxPlot() {
 
 function UpdatePie() {
     d3.select('#canvas_page2').selectAll('*').remove();
-    var pieContainer = d3.select('#canvas_page2').node();
-    var width = pieContainer.getBoundingClientRect().width;
-    var height = pieContainer.getBoundingClientRect().height;
-    var margin = 30;
+    var canvasContainer = d3.select('#canvas_page2').node();
+    var width = canvasContainer.getBoundingClientRect().width;
+    var height = canvasContainer.getBoundingClientRect().height;
+    var margin = 40;
     var transition_duration = dashboardAnimated ? 500 : 0;
     var svg = d3.select('#canvas_page2').append('svg').attr('width', width).attr('height', height);
     var g = svg.append('g').attr('transform', 'translate(' + (width / 2) + ',' + (height / 2) + ')');
@@ -339,7 +365,7 @@ function UpdatePie() {
     var g = g.selectAll('path').data(pie(data)).enter().append('g');
 
     g.append('path').attr('fill', function (d, i) {
-        return d3.schemeCategory10[i];
+        return d3.schemeCategory10[Math.abs(1 - i)];
     }).transition().delay(function (d, i) {
         return i * transition_duration;
     }).duration(transition_duration)
@@ -357,6 +383,32 @@ function UpdatePie() {
         .transition()
         .delay(data.length * transition_duration)
         .text(function (d) { return d.data['number']; });
+
+    var legendData = ['Term Rejected', 'Term Subscriped'];
+    var legend = svg.append('g')
+        .attr('class', 'node')
+        .attr('transform', 'translate(' + (-width / 2) + ',' + (height - 50) + ')')
+        .selectAll('g')
+        .data(legendData)
+        .enter().append('g')
+        .attr('transform', function (d, i) { return 'translate(' + (i * 150 - 150) + ',0)'; });
+
+    legend.append('rect')
+        .attr('font-family', 'sans-serif')
+        .attr('font-size', 10)
+        .attr('text-anchor', 'end')
+        .attr('x', width + 24)
+        .attr('width', 19)
+        .attr('height', 19)
+        .attr('fill', function (d, i) {
+            return d3.schemeCategory10[i];
+        });
+
+    legend.append('text')
+        .attr('x', width + 50)
+        .attr('y', 9.5)
+        .attr('dy', '0.32em')
+        .text(function (d) { return d; });
 
     div = d3.select('.toolTip');
     d3.selectAll('path').on('mousemove', function (d, i) {
